@@ -4,19 +4,7 @@ pipeline{
         VERSION = "${env.BUILD_ID}"
     }
     stages{
-        stage("sonar quality check"){
-            agent{
-                docker {
-                    image 'openjdk:11'
-                steps{
-                    script{
-                        echo "purna"
-                    }
-                }
-                } 
-            }
-        }
-        stage('docker build & docker push'){
+       stage('docker build & docker push'){
             steps{
                 script{
                     withCredentials([string(credentialsId: 'nexus-repo', variable: 'nexus-pass')]) {
